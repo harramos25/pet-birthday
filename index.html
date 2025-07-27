@@ -41,115 +41,9 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    .cake {
-      margin: 0 auto;
-      margin-top: 5vh;
-      width: 25vw;
-      max-width: 150px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-
-    .layer {
-      width: 100%;
-      height: 30px;
-      border-radius: 10px;
-      animation: drop 1s ease forwards;
-      opacity: 0;
-    }
-
-    .layer1 { background: #fff0f5; animation-delay: 0.3s; }
-    .layer2 { background: #ffc0cb; animation-delay: 0.6s; }
-    .layer3 { background: #ffaad4; animation-delay: 0.9s; }
-    .layer4 { background: #ff7eb9; animation-delay: 1.2s; }
-    .layer5 { background: #ff4d94; animation-delay: 1.5s; }
-
-    @keyframes drop {
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .candle {
-      width: 5px;
-      height: 15px;
-      background: #ffd700;
-      margin-bottom: 5px;
-      border-radius: 3px;
-      animation: flicker 1s infinite, candleDrop 1s ease forwards;
-      animation-delay: 1.8s;
-      opacity: 0;
-    }
-
-    .flame {
-      width: 10px;
-      height: 10px;
-      background: radial-gradient(circle, orange 40%, yellow 60%);
-      border-radius: 50%;
-      position: relative;
-      top: -8px;
-      left: -3px;
-      animation: flicker 0.4s infinite;
-    }
-
-    @keyframes candleDrop {
-      to { opacity: 1; }
-    }
-
-    @keyframes flicker {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-    }
-
-    .popup {
-      margin-top: 2rem;
-      background: #fff;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px pink;
-      z-index: 10;
-      display: none;
-      max-width: 90vw;
-      animation: fadeIn 1s ease;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .popup.show {
-      display: block;
-    }
-
-    .gift-popup {
-      display: none;
-      position: absolute;
-      bottom: 200px;
-      right: 10%;
-      width: 90vw;
-      max-width: 250px;
-      background: white;
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 0 15px #ffcce5;
-      text-align: center;
-      z-index: 6;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .gift-popup.show {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .gift-box {
-      position: absolute;
+      position: fixed;
       bottom: 10%;
-      right: 10%;
       width: 15vw;
       max-width: 80px;
       height: 15vw;
@@ -165,174 +59,125 @@
     }
 
     .gift-box::before {
-      content: "🎁";
+      content: "🏷";
       font-size: 1.5rem;
     }
 
-    .unicorn {
-      position: absolute;
-      width: 15vw;
-      max-width: 60px;
-      height: auto;
-      animation: moveAround 10s linear infinite;
-      z-index: 2;
+    #giftBox1 { left: 20%; }
+    #giftBox2 { right: 20%; }
+
+    .popup {
+      background: #fff;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px pink;
+      max-width: 90vw;
+      animation: bounceIn 1s ease;
+      text-align: center;
+      margin: 20px auto;
+      display: none;
+      position: relative;
+      z-index: 10;
     }
 
-    @keyframes moveAround {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(100vw, 10vh); }
-      50% { transform: translate(80vw, 60vh); }
-      75% { transform: translate(10vw, 80vh); }
-      100% { transform: translate(0, 0); }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
     }
 
-    @media (max-width: 768px) {
-      .popup, .gift-popup {
-        right: 5%;
-        left: 5%;
-        width: 90%;
-      }
-
-      .gift-box {
-        right: 5%;
-      }
+    .popup button {
+      margin-top: 10px;
+      border: none;
+      background: #ff69b4;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body class="text-center">
+  <div class="greeting">Happy 17th Birthday, Jamiria! 🎂🧔</div>
 
-  <div class="greeting">Happy 17th Birthday, Jamiria! 🎂🦄</div>
-
-  <div class="cake">
-    <div class="candle">
-      <div class="flame"></div>
-    </div>
-    <div class="layer layer1"></div>
-    <div class="layer layer2"></div>
-    <div class="layer layer3"></div>
-    <div class="layer layer4"></div>
-    <div class="layer layer5"></div>
-  </div>
-
-  <!-- Popup message below the cake -->
-  <div class="popup" id="popup">
+  <div id="popup1" class="popup">
     <strong>Dear Jammy,</strong><br>
-    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
-    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
+    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<Br>
+    Wishing you sparkles, cake, and a magical 17th birthday! 🧔✨<br>
+    <button onclick="document.getElementById('popup1').style.display='none'">Close</button>
   </div>
 
-  <!-- Gift message (from original code) -->
-  <div id="giftMessage" class="gift-popup">
+  <div id="popup2" class="popup">
     🎉 Hoy Pet! 🎉<br>
-    Wala ko'y intro, kay you already know unsa ni, It's us—still stupid, still loud, still tabian, still laughing at things we shouldn't be. Pero always ra gyud ko thankful nga nag-ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan 💝
+    Wala ko'y intro, kay you already know unsa ni, It's us—still stupid, still loud, still tabian, still laughing at things we shouldn't be. Pero always ra gyud ko thankful nga nag-ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan 💕<br>
+    <button onclick="document.getElementById('popup2').style.display='none'">Close</button>
   </div>
 
-  <!-- Gift Box -->
-  <div class="gift-box" onclick="toggleGiftMessage()"></div>
+  <div id="giftBox1" class="gift-box" onclick="openPopup('popup1')"></div>
+  <div id="giftBox2" class="gift-box" onclick="openPopup('popup2')"></div>
 
-  <!-- Floating Unicorns -->
-  <img src="uc.png" class="unicorn" style="top: 5%; left: 10%; animation-delay: 0s;">
-  <img src="uc.png" class="unicorn" style="top: 15%; left: 70%; animation-delay: 2s;">
-  <img src="uc.png" class="unicorn" style="top: 50%; left: 20%; animation-delay: 4s;">
-  <img src="uc.png" class="unicorn" style="top: 70%; left: 80%; animation-delay: 6s;">
-  <img src="uc.png" class="unicorn" style="top: 80%; left: 40%; animation-delay: 8s;">
-
-  <canvas id="fireworks"></canvas>
+  <canvas id="confetti"></canvas>
 
   <audio autoplay loop>
     <source src="HBD song.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Fireworks
-    const canvas = document.getElementById('fireworks');
+    function openPopup(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    // Confetti animation
+    const canvas = document.getElementById('confetti');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    class Firework {
-      constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.particles = [];
-        this.color = color;
-
-        for (let i = 0; i < 50; i++) {
-          const angle = Math.random() * 2 * Math.PI;
-          const speed = Math.random() * 4 + 1;
-          this.particles.push({
-            x: this.x,
-            y: this.y,
-            dx: Math.cos(angle) * speed,
-            dy: Math.sin(angle) * speed,
-            alpha: 1
-          });
-        }
-      }
-
-      update() {
-        this.particles.forEach(p => {
-          p.x += p.dx;
-          p.y += p.dy;
-          p.alpha -= 0.015;
-        });
-        this.particles = this.particles.filter(p => p.alpha > 0);
-      }
-
-      draw(ctx) {
-        this.particles.forEach(p => {
-          ctx.globalAlpha = p.alpha;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-          ctx.fillStyle = this.color;
-          ctx.fill();
-        });
-        ctx.globalAlpha = 1;
-      }
-    }
-
-    const fireworks = [];
-
-    function animate() {
-      ctx.fillStyle = "rgba(0,0,0,0.2)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      fireworks.forEach((fw, i) => {
-        fw.update();
-        fw.draw(ctx);
-        if (fw.particles.length === 0) fireworks.splice(i, 1);
+    const confetti = [];
+    for (let i = 0; i < 150; i++) {
+      confetti.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 150 + 50,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        tilt: Math.random() * 10 - 10,
+        tiltAngle: 0
       });
-
-      requestAnimationFrame(animate);
     }
 
-    animate();
-
-    function launchFirework() {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height / 2;
-      const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
-      fireworks.push(new Firework(x, y, color));
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(c => {
+        ctx.beginPath();
+        ctx.lineWidth = c.r / 2;
+        ctx.strokeStyle = c.color;
+        ctx.moveTo(c.x + c.tilt + c.r / 4, c.y);
+        ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r);
+        ctx.stroke();
+      });
+      updateConfetti();
     }
 
-    setInterval(() => {
-      launchFirework();
-    }, 500);
-
-    // Show popup below cake after 2.2s
-    setTimeout(() => {
-      document.getElementById('popup').classList.add('show');
-    }, 2200);
-
-    // Toggle gift message
-    function toggleGiftMessage() {
-      document.getElementById('giftMessage').classList.toggle('show');
+    function updateConfetti() {
+      confetti.forEach(c => {
+        c.y += Math.cos(c.d) + 1 + c.r / 2;
+        c.x += Math.sin(c.d);
+        c.tiltAngle += 0.1;
+        c.tilt = Math.sin(c.tiltAngle - i / 3) * 15;
+        if (c.y > canvas.height) {
+          c.y = -10;
+          c.x = Math.random() * canvas.width;
+        }
+      });
     }
+
+    function animateConfetti() {
+      drawConfetti();
+      requestAnimationFrame(animateConfetti);
+    }
+    animateConfetti();
   </script>
 </body>
 </html>
