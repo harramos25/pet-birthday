@@ -1,9 +1,9 @@
-/* full updated HTML with responsive popup placement */
+/* full updated HTML with popup aligned to gift box */
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Jamiria 🎉</title>
+  <title>Happy Birthday Pet 🎉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -129,33 +129,17 @@
       100% { transform: translate(0, 0); }
     }
 
-    .popup {
-      margin-top: 2rem;
-      background: #fff;
-      padding: 5vw;
-      border-radius: 15px;
-      box-shadow: 0 0 10px pink;
+    .gift-section {
+      position: fixed;
+      bottom: 5%;
+      right: 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       z-index: 10;
-      display: none;
-      max-width: 90vw;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .popup.show {
-      display: block;
-      animation: fadeIn 1s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .gift-box {
-      position: absolute;
-      bottom: 10%;
-      right: 10%;
       width: 15vw;
       max-width: 80px;
       height: 15vw;
@@ -163,7 +147,6 @@
       background: #ff69b4;
       border-radius: 10px;
       cursor: pointer;
-      z-index: 5;
       box-shadow: 0 0 10px #ff99cc;
       display: flex;
       align-items: center;
@@ -172,14 +155,12 @@
 
     .gift-box::before {
       content: "🎁";
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
 
     .gift-popup {
       display: none;
-      position: absolute;
-      bottom: 100px;
-      right: 10%;
+      margin-bottom: 10px;
       width: 90vw;
       max-width: 250px;
       background: white;
@@ -187,8 +168,11 @@
       padding: 15px;
       box-shadow: 0 0 15px #ffcce5;
       text-align: center;
-      z-index: 6;
       animation: fadeIn 0.5s ease;
+    }
+
+    .gift-popup.show {
+      display: block;
     }
   </style>
 </head>
@@ -204,12 +188,6 @@
     <div class="layer layer3"></div>
   </div>
 
-  <div class="popup" id="popup">
-    <strong>Dear Jammy,</strong><br>
-    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
-    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
-  </div>
-
   <img src="uc.png" class="unicorn" style="top: 5%; left: 10%; animation-delay: 0s;">
   <img src="uc.png" class="unicorn" style="top: 15%; left: 70%; animation-delay: 2s;">
   <img src="uc.png" class="unicorn" style="top: 50%; left: 20%; animation-delay: 4s;">
@@ -218,10 +196,12 @@
 
   <canvas id="fireworks"></canvas>
 
-  <div class="gift-box" onclick="document.getElementById('giftMessage').style.display = 'block';"></div>
-  <div id="giftMessage" class="gift-popup">
-    🎉 Hoy Pet! 🎉<br>
-    Wala ko'y intro, kay you already know unsa ni, It's us-still stupid, still loud, still tabian, still laughing at things we shouldn't be, Pero always  ra gyud ko thankful nga nag ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan💝
+  <div class="gift-section">
+    <div id="giftMessage" class="gift-popup">
+      🎉 Hoy Pet! 🎉<br>
+      Wala ko'y intro, kay you already know unsa ni, It's us-still stupid, still loud, still tabian, still laughing at things we shouldn't be, Pero always  ra gyud ko thankful nga nag ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan💝
+    </div>
+    <div class="gift-box" onclick="document.getElementById('giftMessage').classList.toggle('show');"></div>
   </div>
 
   <audio autoplay loop>
@@ -307,10 +287,6 @@
     setInterval(() => {
       launchFirework();
     }, 500);
-
-    setTimeout(() => {
-      document.getElementById('popup').classList.add('show');
-    }, 3000);
   </script>
 </body>
 </html>
