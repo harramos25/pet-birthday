@@ -61,20 +61,11 @@
       opacity: 0;
     }
 
-    .layer1 {
-      background: #fff0f5;
-      animation-delay: 0.3s;
-    }
-
-    .layer2 {
-      background: #ffc0cb;
-      animation-delay: 0.6s;
-    }
-
-    .layer3 {
-      background: #ffaad4;
-      animation-delay: 0.9s;
-    }
+    .layer1 { background: #fff0f5; animation-delay: 0.3s; }
+    .layer2 { background: #ffc0cb; animation-delay: 0.6s; }
+    .layer3 { background: #ffaad4; animation-delay: 0.9s; }
+    .layer4 { background: #f08080; animation-delay: 1.2s; }
+    .layer5 { background: #ff6eb4; animation-delay: 1.5s; }
 
     @keyframes drop {
       to { transform: translateY(0); opacity: 1; }
@@ -102,9 +93,7 @@
       animation: flicker 0.4s infinite;
     }
 
-    @keyframes candleDrop {
-      to { opacity: 1; }
-    }
+    @keyframes candleDrop { to { opacity: 1; } }
 
     @keyframes flicker {
       0%, 100% { transform: scale(1); opacity: 1; }
@@ -131,7 +120,7 @@
     .popup {
       position: absolute;
       bottom: 10%;
-      right: 10%;
+      right: 25%;
       background: #fff;
       padding: 1rem;
       border-radius: 15px;
@@ -185,6 +174,8 @@
     <div class="layer layer1"></div>
     <div class="layer layer2"></div>
     <div class="layer layer3"></div>
+    <div class="layer layer4"></div>
+    <div class="layer layer5"></div>
   </div>
 
   <img src="uc.png" class="unicorn" style="top: 5%; left: 10%; animation-delay: 0s;">
