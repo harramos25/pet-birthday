@@ -1,3 +1,4 @@
+/* full updated HTML with responsive popup placement */
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,16 +130,16 @@
     }
 
     .popup {
-      position: absolute;
-      bottom: 10%;
-      right: 10%;
+      margin-top: 2rem;
       background: #fff;
-      padding: 1rem;
+      padding: 5vw;
       border-radius: 15px;
       box-shadow: 0 0 10px pink;
       z-index: 10;
       display: none;
-      max-width: 250px;
+      max-width: 90vw;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .popup.show {
@@ -173,6 +174,22 @@
       content: "🎁";
       font-size: 1.5rem;
     }
+
+    .gift-popup {
+      display: none;
+      position: absolute;
+      bottom: 100px;
+      right: 10%;
+      width: 90vw;
+      max-width: 250px;
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 0 15px #ffcce5;
+      text-align: center;
+      z-index: 6;
+      animation: fadeIn 0.5s ease;
+    }
   </style>
 </head>
 <body class="text-center">
@@ -187,6 +204,12 @@
     <div class="layer layer3"></div>
   </div>
 
+  <div class="popup" id="popup">
+    <strong>Dear Jammy,</strong><br>
+    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
+    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
+  </div>
+
   <img src="uc.png" class="unicorn" style="top: 5%; left: 10%; animation-delay: 0s;">
   <img src="uc.png" class="unicorn" style="top: 15%; left: 70%; animation-delay: 2s;">
   <img src="uc.png" class="unicorn" style="top: 50%; left: 20%; animation-delay: 4s;">
@@ -195,11 +218,10 @@
 
   <canvas id="fireworks"></canvas>
 
-  <div class="gift-box" onclick="document.getElementById('popup').classList.toggle('show');"></div>
-  <div class="popup" id="popup">
-    <strong>Dear Jammy,</strong><br>
-    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
-    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
+  <div class="gift-box" onclick="document.getElementById('giftMessage').style.display = 'block';"></div>
+  <div id="giftMessage" class="gift-popup">
+    🎉 Hoy Pet! 🎉<br>
+    Wala ko'y intro, kay you already know unsa ni, It's us-still stupid, still loud, still tabian, still laughing at things we shouldn't be, Pero always  ra gyud ko thankful nga nag ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan💝
   </div>
 
   <audio autoplay loop>
@@ -285,6 +307,10 @@
     setInterval(() => {
       launchFirework();
     }, 500);
+
+    setTimeout(() => {
+      document.getElementById('popup').classList.add('show');
+    }, 3000);
   </script>
 </body>
 </html>
