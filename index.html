@@ -1,3 +1,4 @@
+/* full updated HTML with responsive popup placement */
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,10 +130,7 @@
     }
 
     .popup {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 2rem;
       background: #fff;
       padding: 5vw;
       border-radius: 15px;
@@ -140,6 +138,8 @@
       z-index: 10;
       display: none;
       max-width: 90vw;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .popup.show {
@@ -148,8 +148,8 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, 20px); }
-      to { opacity: 1; transform: translate(-50%, 0); }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .gift-box {
@@ -204,6 +204,12 @@
     <div class="layer layer3"></div>
   </div>
 
+  <div class="popup" id="popup">
+    <strong>Dear Jammy,</strong><br>
+    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
+    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
+  </div>
+
   <img src="uc.png" class="unicorn" style="top: 5%; left: 10%; animation-delay: 0s;">
   <img src="uc.png" class="unicorn" style="top: 15%; left: 70%; animation-delay: 2s;">
   <img src="uc.png" class="unicorn" style="top: 50%; left: 20%; animation-delay: 4s;">
@@ -211,12 +217,6 @@
   <img src="uc.png" class="unicorn" style="top: 80%; left: 40%; animation-delay: 8s;">
 
   <canvas id="fireworks"></canvas>
-
-  <div class="popup" id="popup">
-    <strong>Dear Jammy,</strong><br>
-    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
-    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
-  </div>
 
   <div class="gift-box" onclick="document.getElementById('giftMessage').style.display = 'block';"></div>
   <div id="giftMessage" class="gift-popup">
