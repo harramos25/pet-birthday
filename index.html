@@ -1,4 +1,3 @@
-/* full updated HTML with popup aligned to gift box */
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,17 +128,34 @@
       100% { transform: translate(0, 0); }
     }
 
-    .gift-section {
-      position: fixed;
-      bottom: 5%;
-      right: 5%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .popup {
+      position: absolute;
+      bottom: 120px;
+      right: 10%;
+      background: #fff;
+      padding: 5vw;
+      border-radius: 15px;
+      box-shadow: 0 0 10px pink;
       z-index: 10;
+      display: none;
+      max-width: 90vw;
+      animation: fadeIn 1s ease;
+      text-align: center;
+    }
+
+    .popup.show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .gift-box {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
       width: 15vw;
       max-width: 80px;
       height: 15vw;
@@ -147,6 +163,7 @@
       background: #ff69b4;
       border-radius: 10px;
       cursor: pointer;
+      z-index: 5;
       box-shadow: 0 0 10px #ff99cc;
       display: flex;
       align-items: center;
@@ -155,12 +172,14 @@
 
     .gift-box::before {
       content: "🎁";
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     .gift-popup {
       display: none;
-      margin-bottom: 10px;
+      position: absolute;
+      bottom: 100px;
+      right: 10%;
       width: 90vw;
       max-width: 250px;
       background: white;
@@ -168,11 +187,8 @@
       padding: 15px;
       box-shadow: 0 0 15px #ffcce5;
       text-align: center;
+      z-index: 6;
       animation: fadeIn 0.5s ease;
-    }
-
-    .gift-popup.show {
-      display: block;
     }
   </style>
 </head>
@@ -196,12 +212,11 @@
 
   <canvas id="fireworks"></canvas>
 
-  <div class="gift-section">
-    <div id="giftMessage" class="gift-popup">
-      🎉 Hoy Pet! 🎉<br>
-      Wala ko'y intro, kay you already know unsa ni, It's us-still stupid, still loud, still tabian, still laughing at things we shouldn't be, Pero always  ra gyud ko thankful nga nag ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan💝
-    </div>
-    <div class="gift-box" onclick="document.getElementById('giftMessage').classList.toggle('show');"></div>
+  <div class="gift-box" onclick="document.getElementById('popup').classList.toggle('show');"></div>
+  <div class="popup" id="popup">
+    <strong>Dear Jammy,</strong><br>
+    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
+    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
   </div>
 
   <audio autoplay loop>
