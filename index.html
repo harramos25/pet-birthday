@@ -61,11 +61,30 @@
       opacity: 0;
     }
 
-    .layer1 { background: #fff0f5; animation-delay: 0.3s; }
-    .layer2 { background: #ffc0cb; animation-delay: 0.6s; }
-    .layer3 { background: #ffaad4; animation-delay: 0.9s; }
-    .layer4 { background: #f08080; animation-delay: 1.2s; }
-    .layer5 { background: #ff6eb4; animation-delay: 1.5s; }
+    .layer1 {
+      background: #fff0f5;
+      animation-delay: 0.3s;
+    }
+
+    .layer2 {
+      background: #ffc0cb;
+      animation-delay: 0.6s;
+    }
+
+    .layer3 {
+      background: #ffaad4;
+      animation-delay: 0.9s;
+    }
+
+    .layer4 {
+      background: #f08080;
+      animation-delay: 1.2s;
+    }
+
+    .layer5 {
+      background: #ff69b4;
+      animation-delay: 1.5s;
+    }
 
     @keyframes drop {
       to { transform: translateY(0); opacity: 1; }
@@ -93,7 +112,9 @@
       animation: flicker 0.4s infinite;
     }
 
-    @keyframes candleDrop { to { opacity: 1; } }
+    @keyframes candleDrop {
+      to { opacity: 1; }
+    }
 
     @keyframes flicker {
       0%, 100% { transform: scale(1); opacity: 1; }
@@ -117,15 +138,22 @@
       100% { transform: translate(0, 0); }
     }
 
-    .popup {
+    .popup-wrapper {
       position: absolute;
       bottom: 10%;
-      right: 25%;
+      right: 10%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+
+    .popup {
       background: #fff;
       padding: 1rem;
       border-radius: 15px;
       box-shadow: 0 0 10px pink;
-      z-index: 10;
       display: none;
       max-width: 250px;
     }
@@ -141,9 +169,6 @@
     }
 
     .gift-box {
-      position: absolute;
-      bottom: 10%;
-      right: 10%;
       width: 15vw;
       max-width: 80px;
       height: 15vw;
@@ -162,9 +187,17 @@
       content: "🎁";
       font-size: 1.5rem;
     }
+
+    @media (max-width: 768px) {
+      .popup-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body class="text-center">
+
   <div class="greeting">Happy 17th Birthday, Jamiria! 🎂🦄</div>
 
   <div class="cake">
@@ -186,11 +219,13 @@
 
   <canvas id="fireworks"></canvas>
 
-  <div class="gift-box" onclick="document.getElementById('popup').classList.toggle('show');"></div>
-  <div class="popup" id="popup">
-    <strong>Dear Jammy,</strong><br>
-    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
-    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
+  <div class="popup-wrapper">
+    <div class="gift-box" onclick="document.getElementById('popup').classList.toggle('show');"></div>
+    <div class="popup" id="popup">
+      <strong>Dear Jammy,</strong><br>
+      I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
+      Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
+    </div>
   </div>
 
   <audio autoplay loop>
