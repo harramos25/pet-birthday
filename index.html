@@ -130,21 +130,20 @@
 
     .popup {
       position: absolute;
-      bottom: 120px;
+      bottom: 10%;
       right: 10%;
       background: #fff;
-      padding: 5vw;
+      padding: 1rem;
       border-radius: 15px;
       box-shadow: 0 0 10px pink;
       z-index: 10;
       display: none;
-      max-width: 90vw;
-      animation: fadeIn 1s ease;
-      text-align: center;
+      max-width: 250px;
     }
 
     .popup.show {
       display: block;
+      animation: fadeIn 1s ease;
     }
 
     @keyframes fadeIn {
@@ -173,22 +172,6 @@
     .gift-box::before {
       content: "🎁";
       font-size: 1.5rem;
-    }
-
-    .gift-popup {
-      display: none;
-      position: absolute;
-      bottom: 100px;
-      right: 10%;
-      width: 90vw;
-      max-width: 250px;
-      background: white;
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 0 15px #ffcce5;
-      text-align: center;
-      z-index: 6;
-      animation: fadeIn 0.5s ease;
     }
   </style>
 </head>
