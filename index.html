@@ -77,12 +77,12 @@
     }
 
     .layer4 {
-      background: #f08080;
+      background: #ff7eb9;
       animation-delay: 1.2s;
     }
 
     .layer5 {
-      background: #ff69b4;
+      background: #ff4d94;
       animation-delay: 1.5s;
     }
 
@@ -97,7 +97,7 @@
       margin-bottom: 5px;
       border-radius: 3px;
       animation: flicker 1s infinite, candleDrop 1s ease forwards;
-      animation-delay: 1.2s;
+      animation-delay: 1.8s;
       opacity: 0;
     }
 
@@ -138,29 +138,23 @@
       100% { transform: translate(0, 0); }
     }
 
-    .popup-wrapper {
-      position: absolute;
-      bottom: 10%;
-      right: 10%;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      z-index: 10;
-      flex-wrap: wrap;
-    }
-
     .popup {
+      position: absolute;
+      bottom: 110px;
+      right: 10%;
       background: #fff;
-      padding: 1rem;
+      padding: 15px;
       border-radius: 15px;
       box-shadow: 0 0 10px pink;
+      z-index: 10;
       display: none;
-      max-width: 250px;
+      max-width: 90vw;
+      animation: fadeIn 1s ease;
+      text-align: center;
     }
 
     .popup.show {
       display: block;
-      animation: fadeIn 1s ease;
     }
 
     @keyframes fadeIn {
@@ -169,6 +163,9 @@
     }
 
     .gift-box {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
       width: 15vw;
       max-width: 80px;
       height: 15vw;
@@ -188,16 +185,43 @@
       font-size: 1.5rem;
     }
 
+    .gift-popup {
+      display: none;
+      position: absolute;
+      bottom: 200px;
+      right: 10%;
+      width: 90vw;
+      max-width: 250px;
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 0 15px #ffcce5;
+      text-align: center;
+      z-index: 6;
+      animation: fadeIn 0.5s ease;
+    }
+
     @media (max-width: 768px) {
-      .popup-wrapper {
-        flex-direction: column;
-        align-items: center;
+      .popup {
+        right: 5%;
+        left: 5%;
+        width: 90%;
+        bottom: 110px;
+      }
+
+      .gift-box {
+        right: 5%;
+      }
+
+      .gift-popup {
+        right: 5%;
+        left: 5%;
+        width: 90%;
       }
     }
   </style>
 </head>
 <body class="text-center">
-
   <div class="greeting">Happy 17th Birthday, Jamiria! 🎂🦄</div>
 
   <div class="cake">
@@ -219,13 +243,17 @@
 
   <canvas id="fireworks"></canvas>
 
-  <div class="popup-wrapper">
-    <div class="gift-box" onclick="document.getElementById('popup').classList.toggle('show');"></div>
-    <div class="popup" id="popup">
-      <strong>Dear Jammy,</strong><br>
-      I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
-      Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
-    </div>
+  <div class="gift-box" onclick="togglePopup()"></div>
+
+  <div class="popup" id="popup">
+    <strong>Dear Jammy,</strong><br>
+    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<br>
+    Wishing you sparkles, cake, and a magical 17th birthday! 🦄✨
+  </div>
+
+  <div id="giftMessage" class="gift-popup">
+    🎉 Hoy Pet! 🎉<br>
+    Wala ko'y intro, kay you already know unsa ni, It's us—still stupid, still loud, still tabian, still laughing at things we shouldn't be. Pero always ra gyud ko thankful nga nag-ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan 💝
   </div>
 
   <audio autoplay loop>
@@ -311,6 +339,11 @@
     setInterval(() => {
       launchFirework();
     }, 500);
+
+    function togglePopup() {
+      const popup = document.getElementById('popup');
+      popup.classList.toggle('show');
+    }
   </script>
 </body>
 </html>
