@@ -2,182 +2,420 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Pet 🎉</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Jamiria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: linear-gradient(to bottom right, #ffe0f7, #ffd6fc);
-      font-family: 'Comic Sans MS', cursive;
-      overflow-x: hidden;
+    :root {
+      --vanilla: #f0e4d0;
+      --chocolate: #553c13;
     }
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
+    body {
+      margin: 0;
+      background-image: url('bg.avif');
+      overflow: hidden;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      line-height: 1.7;
+  }
+  p {
+    font-family: 'Playfair Display', serif;
+  }
+
+    audio {
+      display: none;
+    }
+
+    .container {
+      position: relative;
       width: 100vw;
       height: 100vh;
-      z-index: 0;
-    }
-
-    .greeting {
-      text-align: center;
-      color: white;
-      font-size: 6vw;
-      font-weight: bold;
-      margin-top: 5vh;
-      z-index: 3;
-      position: relative;
-      text-shadow: 2px 2px 10px #ff40d4;
-      animation: popIn 2s ease-in-out;
-    }
-
-    @keyframes popIn {
-      from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .gift-box {
-      position: fixed;
-      bottom: 10%;
-      width: 15vw;
-      max-width: 80px;
-      height: 15vw;
-      max-height: 80px;
-      background: #ff69b4;
-      border-radius: 10px;
-      cursor: pointer;
-      z-index: 5;
-      box-shadow: 0 0 10px #ff99cc;
       display: flex;
-      align-items: center;
       justify-content: center;
-    }
-
-    .gift-box::before {
-      content: "🏷";
-      font-size: 1.5rem;
-    }
-
-    #giftBox1 { left: 20%; }
-    #giftBox2 { right: 20%; }
-
-    .popup {
-      background: #fff;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px pink;
-      max-width: 90vw;
-      animation: bounceIn 1s ease;
+      align-items: center;
+      flex-direction: column;
       text-align: center;
-      margin: 20px auto;
-      display: none;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ff69b4;
+      text-shadow: 2px 2px 5px #000;
+      font-family: 'Pacifico', cursive;
+      font-size: 48px;
+      text-align: center;
+    }
+
+    .blinking-text {
+  font-size: 1.5rem;
+  color: #fffacd;
+  text-shadow: 1px 1px 3px #000;
+  animation: blink 1s infinite;
+  margin-bottom: 60px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+    .cake {
       position: relative;
+      width: 250px;
+      height: 200px;
+    }
+
+    .plate {
+      width: 270px;
+      height: 110px;
+      position: absolute;
+      bottom: 20px;
+      left: -10px;
+      background-color: #ccc;
+      border-radius: 50%;
+      box-shadow: 0 2px 0 #aaa, 0 4px 0 #999, 0 5px 40px rgba(0,0,0,0.5);
+    }
+
+    .layer {
+      width: 250px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      background-color: var(--chocolate);
+    }
+
+    .layer-bottom { top: 66px; }
+    .layer-middle { top: 33px; }
+    .layer-top { top: 0; }
+
+    .icing {
+      top: 2px;
+      left: 5px;
+      width: 240px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: var(--vanilla);
+      position: absolute;
+      z-index: 2;
+    }
+
+    .icing::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 5px;
+      bottom: 6px;
+      left: 5px;
+      background-color: #fdf6e3;
+      box-shadow: 0 0 4px #fff8dc, 0 0 4px #fff8dc;
+      border-radius: 50%;
+    }
+
+    .drip {
+      position: absolute;
+      background-color: var(--vanilla);
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+
+    .drip1 {
+      width: 40px; height: 48px;
+      top: 53px; left: 5px;
+      transform: skewY(15deg);
+    }
+    .drip2 {
+      width: 50px; height: 60px;
+      top: 69px; left: 181px;
+      transform: skewY(-15deg);
+    }
+    .drip3 {
+      width: 80px; height: 60px;
+      top: 54px; left: 90px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    .candle {
+      background-color: #7B020B;
+      width: 16px;
+      height: 50px;
+      border-radius: 8px / 4px;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      margin-left: -8px;
       z-index: 10;
-    }
-
-    @keyframes bounceIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      50% { transform: scale(1.1); opacity: 1; }
-      70% { transform: scale(0.9); }
-      100% { transform: scale(1); }
-    }
-
-    .popup button {
-      margin-top: 10px;
-      border: none;
-      background: #ff69b4;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 10px;
       cursor: pointer;
+    }
+
+    .candle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #aa2b2b;
+    }
+
+    .flame {
+      position: absolute;
+      background-color: orange;
+      width: 15px;
+      height: 35px;
+      border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+      top: -34px;
+      left: 50%;
+      margin-left: -7.5px;
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(255,165,0,0.5), 0 0 20px rgba(255,165,0,0.5), 0 0 60px rgba(255,165,0,0.5);
+      transform-origin: 50% 90%;
+      animation: flicker 1s ease-in-out alternate infinite;
+    }
+
+    @keyframes flicker {
+      0% { transform: skewX(5deg); }
+      25% { transform: skewX(-5deg); }
+      50% { transform: skewX(10deg); }
+      75% { transform: skewX(-10deg); }
+      100% { transform: skewX(5deg); }
+    }
+
+    .hidden {
+  display: none;
+}
+
+
+   .letter-modal {
+  position: fixed;
+  top: -50;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 182, 193, 0.8);
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.letter-content {
+  background: #fff;
+  color: #ff1493;
+  padding: 30px;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  font-size: 1.2rem;
+  animation: fadeIn 1s ease;
+  text-align: center;
+  font-family: 'Segoe UI', cursive;
+  line-height: 1.6;
+}
+
+#popup {
+  display: none;  
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.letter-popup {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 240, 250, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px pink;
+  max-width: 80%;
+  z-index: 9999;
+}
+
+.letter-content {
+  text-align: center;
+  font-size: 18px;
+  color: #cc3366;
+  font-family: 'Pacifico', cursive;
+}
+
+.nav-arrows {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.arrow-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ff69b4; /* pink tone for birthday vibe */
+  transition: transform 0.2s;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+    #confetti-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
   </style>
 </head>
-<body class="text-center">
-  <div class="greeting">Happy 17th Birthday, Jamiria! 🎂🧔</div>
-
-  <div id="popup1" class="popup">
-    <strong>Dear Jammy,</strong><br>
-    I may not be there to give you a gift, but I made this just for you with all my heart. 💕<Br>
-    Wishing you sparkles, cake, and a magical 17th birthday! 🧔✨<br>
-    <button onclick="document.getElementById('popup1').style.display='none'">Close</button>
-  </div>
-
-  <div id="popup2" class="popup">
-    🎉 Hoy Pet! 🎉<br>
-    Wala ko'y intro, kay you already know unsa ni, It's us—still stupid, still loud, still tabian, still laughing at things we shouldn't be. Pero always ra gyud ko thankful nga nag-ila ta, from demure to the unhinged. You make life less heavy. That's it. Walay pa-drama. Just ka OA-yan 💕<br>
-    <button onclick="document.getElementById('popup2').style.display='none'">Close</button>
-  </div>
-
-  <div id="giftBox1" class="gift-box" onclick="openPopup('popup1')"></div>
-  <div id="giftBox2" class="gift-box" onclick="openPopup('popup2')"></div>
-
-  <canvas id="confetti"></canvas>
-
+<body>
   <audio autoplay loop>
     <source src="HBD song.mp3" type="audio/mpeg">
   </audio>
 
-  <script>
-    function openPopup(id) {
-      document.getElementById(id).style.display = 'block';
-    }
+  <canvas id="confetti-canvas"></canvas>
 
-    // Confetti animation
-    const canvas = document.getElementById('confetti');
-    const ctx = canvas.getContext('2d');
+  <div class="container">
+    <h1>Happy Birthday 17ᵗʰ, Jamiria!</h1>
+
+<p class="blinking-text">Make a wish and click the candle</p>
+
+    <div class="cake" onclick="blowCandle()">
+      <div class="plate"></div>
+      <div class="layer layer-bottom"></div>
+      <div class="layer layer-middle"></div>
+      <div class="layer layer-top"></div>
+      <div class="icing"></div>
+      <div class="drip drip1"></div>
+      <div class="drip drip2"></div>
+      <div class="drip drip3"></div>
+     <div class="candle" id="candle">
+        <div class="flame" id="flame"></div>
+      </div>
+    </div>
+
+<div class="letter-popup hidden">
+  <div class="letter-content" id="letterContent"></div>
+  <div class="nav-arrows">
+    <button onclick="prevLetter()">⬅</button>
+    <button onclick="nextLetter()">➡</button>
+  </div>
+</div>
+
+<script>
+  const audioEl = document.querySelector("audio");
+  const candle = document.getElementById("candle");
+  const flame = document.querySelector(".flame");
+  const letterPopup = document.querySelector(".letter-popup");
+  const letterContent = document.getElementById("letterContent");
+  const prevBtn = document.querySelector(".nav-arrows button:first-child");
+  const nextBtn = document.querySelector(".nav-arrows button:last-child");
+
+  // Enable music play on first user interaction
+  document.addEventListener("click", () => {
+    audioEl.play().catch(() => {});
+  }, { once: true });
+
+  const letters = [
+    `<p><strong>Dear Jammy,</strong><br>
+This may just look like a cute webpage, but trust me — there's real magic here. ✨<br>
+Unaha sa og send sa GCash para matinuod imong wish — charizzzz! 😭💸<br><br>
+Whatever you wished for, I hope the universe (and maybe a bit of HTML/CSS magic) conspires to give it to you — in its own weird, beautiful timing. 💫<br>
+This gift came from puyat, effort, and genuine love for you as a friend. 💖<br>
+Happy 17ᵗʰ, Jammy! Keep dreaming, keep shining, and don’t forget how loved you are. Always. 🎂✨</p>`,
+
+    `<p>🎉 Hoy Pet! 🎉<br>
+Wala na koy intro kay kabalo na ka unsay naa diri. It’s us — still stupid, still loud, still tabian, still laughing at things we shouldn’t. 🙃<br><br>
+Pero real talk, thankful gyud ko nga nagkaila ta. From demure kunohay to the fully unhinged. You make life less heavy — and more chismis-filled. 😭💕<br><br>
+That’s it. Walay pa-drama. Just ka OA-yan. 😌</p>`
+  ];
+
+  let currentLetter = 0;
+
+  function showLetter(index) {
+    letterContent.innerHTML = letters[index];
+    letterPopup.classList.remove("hidden");
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentLetter = (currentLetter - 1 + letters.length) % letters.length;
+    showLetter(currentLetter);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentLetter = (currentLetter + 1) % letters.length;
+    showLetter(currentLetter);
+  });
+
+  candle.addEventListener("click", () => {
+    flame.style.display = "none";
+    showLetter(currentLetter);
+    triggerConfetti();
+    audioEl.play().catch(() => {});
+  });
+
+  function triggerConfetti() {
+    const canvas = document.getElementById("confetti-canvas");
+    const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     const confetti = [];
+
     for (let i = 0; i < 150; i++) {
       confetti.push({
         x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        y: Math.random() * canvas.height - canvas.height,
         r: Math.random() * 6 + 4,
-        d: Math.random() * 150 + 50,
-        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
-        tilt: Math.random() * 10 - 10,
-        tiltAngle: 0
+        d: Math.random() * 50 + 50,
+        color: `hsl(${Math.random() * 360}, 100%, 75%)`,
+        tilt: Math.random() * 10 - 10
       });
     }
 
-    function drawConfetti() {
+    function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      confetti.forEach(c => {
+      confetti.forEach((c, i) => {
         ctx.beginPath();
-        ctx.lineWidth = c.r / 2;
-        ctx.strokeStyle = c.color;
-        ctx.moveTo(c.x + c.tilt + c.r / 4, c.y);
-        ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r);
-        ctx.stroke();
+        ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+        ctx.fillStyle = c.color;
+        ctx.fill();
       });
-      updateConfetti();
+
+      update();
+      requestAnimationFrame(draw);
     }
 
-    function updateConfetti() {
-      confetti.forEach(c => {
-        c.y += Math.cos(c.d) + 1 + c.r / 2;
-        c.x += Math.sin(c.d);
-        c.tiltAngle += 0.1;
-        c.tilt = Math.sin(c.tiltAngle - i / 3) * 15;
+    function update() {
+      confetti.forEach((c, i) => {
+        c.y += Math.cos(c.d / 10) + 1 + c.r / 2;
+        c.x += Math.sin(c.d / 10);
+
         if (c.y > canvas.height) {
-          c.y = -10;
-          c.x = Math.random() * canvas.width;
+          confetti[i] = {
+            x: Math.random() * canvas.width,
+            y: -10,
+            r: c.r,
+            d: c.d,
+            color: c.color,
+            tilt: c.tilt
+          };
         }
       });
     }
 
-    function animateConfetti() {
-      drawConfetti();
-      requestAnimationFrame(animateConfetti);
-    }
-    animateConfetti();
-  </script>
+    draw();
+  }
+</script>
 </body>
 </html>
